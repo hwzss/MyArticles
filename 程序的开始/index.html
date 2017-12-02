@@ -1,0 +1,985 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>index</title>
+<style>
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+body {
+  background-color: white;
+}
+
+.markdown-body {
+  min-width: 200px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px;
+
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;;word-wrap: break-word; word-break: break-all;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.diff .hljs-header {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-doctag,
+.tex .hljs-formula {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rule .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body,
+.hljs-name {
+  color: #008080;
+}
+
+.hljs-regexp {
+  color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.diff .hljs-change {
+  background: #0086b3;
+}
+
+.hljs-chunk {
+  color: #aaa;
+}
+
+
+</style>
+
+<style> @media print{ .hljs{overflow: visible; word-wrap: break-word !important;} }</style></head><body><div class="markdown-body">
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-ba28da98fa4c3f5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="程序的开始main函数与Coding生涯的开始hello World!.png"/></p>
+
+<blockquote>
+<p>iOS开发中，main函数是我们熟知的程序启动入口，但实际上并非真正意义上的入口，因为在我们运行程序，再到main方法被调用之间，程序已经做了许许多多的事情，比如我们熟知的runtime的初始化就发生在main函数调用前，还有程序动态库的加载链接也发生在这阶段，本文主要对从程序启动到main函数中发生的主要事情进行简单介绍。</p>
+</blockquote>
+
+<p>其实简单总结起来就是：</p>
+
+<p>系统先读取App的可执行文件（Mach-O文件），从里面获得dyld的路径，然后加载dyld，dyld去初始化运行环境，开启缓存策略，加载程序相关依赖库(其中也包含我们的可执行文件)，并对这些库进行链接，最后调用每个依赖库的初始化方法，在这一步，runtime被初始化。当所有依赖库的初始化后，轮到最后一位(程序可执行文件)进行初始化，在这时runtime会对项目中所有类进行类结构初始化，然后调用所有的load方法。最后dyld返回main函数地址，main函数被调用，我们便来到了熟悉的程序入口。</p>
+
+<p>下面我们将结合代码对整个过程进行分析：</p>
+
+<h1 id="toc_0">dyld加载</h1>
+
+<p>这里先说下Mach-O文件。<br/>
+Mach-O文件格式是 OS X 与 iOS 系统上的可执行文件格式，像我们编译过程产生的.O文件，以及程序的可执行文件，动态库等都是Mach-O文件。它的结构如下:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-9ca5b8e611ff0bc6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mach-o文件.jpg"/></p>
+
+<p>有如下几个部分组成：<br/>
+1. Header：保存了一些基本信息，包括了该文件运行的平台、文件类型、LoadCommands的个数等等。<br/>
+2. LoadCommands：可以理解为加载命令，在加载Mach-O文件时会使用这里的数据来确定内存的分布以及相关的加载命令。比如我们的main函数的加载地址，程序所需的dyld的文件路径，以及相关依赖库的文件路径。<br/>
+3. Data： 这里包含了具体的代码、数据等等。<br/>
+我们可以通过Mach-O文件查看器<a href="https://sourceforge.net/projects/machoview/">MachOView</a>查看一个测试项目(这里放上地址)编译后的可执行文件内容:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-9d3d02177777df8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Mach-O文件内容.png"/></p>
+
+<p>这里可以看到，程序需要的dyld的路径在<em>LC_LOAD_DYLINKER</em>命令里，一般都是在/usr/lib/dyld 路径下。这里的<em>LC_MAIN</em>指的是程序main函数加载地址，下面还有写<em>LC_LOAD_DYLIB</em>指向的都是程序依赖库加载信息，如果我们程序里使用到了AFNetworking，这里就会多一条名为<em>LC_LOAD_DYLIB(AFNetworking)</em>的命令，如下图</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-1956cec680b4a5f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三方库.png"/></p>
+
+<p>这里可以看到一些我们比较常用的三方库：AFNetworking,IQKeyboard等。</p>
+
+<p>系统加载程序可执行文件后，通过分析文件来获得dyld所在路径来加载dyld，然后就将后面的事情甩给dyld了。</p>
+
+<h1 id="toc_1">从dyld开始</h1>
+
+<p>dyld: (the dynamic link editor)动态链接器，其<a href="https://github.com/opensource-apple/dyld">源码是开源的</a>。</p>
+
+<p>ImageLoader: 用于辅助加载特定可执行文件格式的类，程序中对应实例可简称为image(如程序可执行文件，Framework库，bundle文件)。</p>
+
+<p>dyld接手后得做很多事情，主要负责初始化程序环境，将可执行文件以及相应的依赖库与插入库加载进内存生成对应的ImageLoader类的image(镜像文件)对象，对这些image进行链接，调用各image的初始化方法等等(注:这里多数事情都是递归的，从底向上的方法调用)，其中runtime也是在这个过程中被初始化，这些事情大多数在dyld:_mian方法中被发生，我们可以看段简洁的代码：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-1b90b924ce8454bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dyld::_main函数代码.png"/></p>
+
+<p>这里的_main函数是dyld的函数，并非我们程序里的main函数。</p>
+
+<p>1.sMainExecutable = instantiateFromLoadedImage(....)与loadInsertedDylib(...)</p>
+
+<p>这一步dyld将我们可执行文件以及插入的lib加载进内存,生成对应的image。<br/>
+  sMainExecutable对应着我们的可执行文件，里面包含了我们项目中所有新建的类。<br/>
+  InsertDylib一些插入的库，他们配置在全局的环境变量<em>sEnv</em>中，我们可以在项目中设置<a href="https://github.com/opensource-apple/dyld/blob/3f928f32597888c5eac6003b9199d972d49857b5/doc/man/man1/dyld.1">环境变量</a><em>DYLD_PRINT_ENV</em>为1来打印该<em>sEnv</em>的值。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-472120178e690f95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="环境变量设置.png"/></p>
+
+<p>运行程序Log如下：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-7a98f7603f93d138.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打印出插入库的log.png"/></p>
+
+<p>可以看到插入的库为:<em>libBacktraceRecording.dylib</em>和<em>libViewDebuggerSupport</em>.<br/>
+有时我们会在三方App的Mach-O文件中通过修改DYLD_INSERT_LIBRARIES的值来加入我们自己的动态库，从而注入代码，hook别人的App(<a href="http://bbs.iosre.com/t/igrimace-hook-root-app/440">相关资料</a>)。</p>
+
+<p>2.link（sMainExecutable,...)和link(image，....)<br/>
+  对上面生成的Image进行进行链接。其主要做的事有对image进行load(加载),rebase(基地址复位)，bind(外部符号绑定)，我们可以查看源码:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-6f56830c435d5744.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="link方法.png"/></p>
+
+<ul>
+<li><p>recursiveLoadLibraries(context, preflightOnly, loaderRPaths)<br/>
+递归加载所有依赖库进内存。</p></li>
+<li><p>recursiveRebase(context)<br/>
+递归对自己以及依赖库进行复基位操作。在以前，程序每次加载其在内存中的堆栈基地址都是一样的，这意味着你的方法，变量等地址每次都一样的，这使得程序很不安全，后面就出现ASLR（Address space layout randomization,地址空间配置随机加载），程序每次启动后地址都会随机变化，这样程序里所有的代码地址都是错的，需要重新对代码地址进行计算修复才能正常访问。</p></li>
+<li><p>recursiveBind(context, forceLazysBound, neverUnload)<br/>
+对库中所有nolazy的符号进行bind,一般的情况下多数符号都是lazybind的，他们在第一次使用的时候才进行bind。</p></li>
+</ul>
+
+<p>3.initializeMainExecutable()</p>
+
+<p>这一步主要是调用所有image的Initalizer方法进行初始化。这里的Initalizers方法并非名为Initalizers的方法，而是C++静态对象初始化构造器，__atribute__((constructor))进行修饰的方法，在LmageLoader类中initializer函数指针所指向该初始化方法的地址。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-ba655665e94ff040.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="initiallizer函数指针.jpg"/></p>
+
+<p>我们可以在程序中设置环境变量<em>DYLD_PRINT_INITIALIZERS</em>为1来打印出程序的各种依赖库的initializer方法：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-6519b3d716061e1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="可以打印出调用了Initalizers的image的.png"/></p>
+
+<p>运行程序，系统Log打印如下:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-0afb5d578f0fd4db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lnitializer调用log.png"/></p>
+
+<p>(由于打印的比较长，这样就截取开头的log)可以看到每个依赖库对应着一个初始化方法，名称各有不同。<br/>
+这里最开始调用的libSystem.dylib的initializer function比较特殊，因为runtime初始化就在这一阶段，而这个方法其实很简单，我们可以在这里看到<a href="http://www.opensource.apple.com/source/Libsystem/Libsystem-169.3/init.c">init.c</a>源码，主要方法如下：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-73eaa7ffd4574f29.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="libSystem_initializer方法.jpg"/><br/>
+其中libdispatch_init里调用了到了runtime初始化方法_objc_init.我们可以、在程序中打个符号断点来验证:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-f85aecc2b7bf8b38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="_objc_init符号断点.png"/></p>
+
+<p>运行程序，然后断点命中，我们来看下调用栈：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-8c259b2b62edcc3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="objc_init调用栈.png"/><br/>
+这里可以看到_objc_init调用的顺序，先libSystem_initializer调用libdispatch_init再到_objc_init初始化runtime。</p>
+
+<p>runtime初始化后不会闲着，在_objc_init中注册了几个通知，从dyld这里接手了几个活，其中包括负责初始化相应依赖库里的类结构，调用依赖库里所有的laod方法。</p>
+
+<p>就拿sMainExcuatable来说，它的initializer方法是最后调用的，当initializer方法被调用前dyld会通知runtime进行类结构初始化，然后再通知调用load方法，这些目前还发生在main函数前，但由于lazy bind机制，依赖库多数都是在使用时才进行bind，所以这些依赖库的类结构初始化都是发生在程序里第一次使用到该依赖库时才进行的。</p>
+
+<h1 id="toc_2">main函数被调用</h1>
+
+<p>当所有的依赖库库的lnitializer都调用完后，dyld::main函数会返回程序的main函数地址，main函数被调用，从而代码来到了我们熟悉的程序入口。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1488825-78295294db9b9183.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="main函数入口.png"/></p>
+
+<h1 id="toc_3">参考资料</h1>
+
+<p>1.<a href="https://objccn.io/issue-6-3/">Mach-O 可执行文件</a><br/>
+2.<a href="https://feicong.github.io/2017/01/14/dylib/index.html">dylib动态库加载过程分析</a><br/>
+3.<a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/">iOS 程序 main 函数之前发生了什么</a><br/>
+4.<a href="https://techblog.toutiao.com/2017/01/17/iosspeed/">今日头条iOS客户端启动速度优化</a><br/>
+5.<a href="https://techblog.toutiao.com/2017/07/05/session413/">App 启动时间：过去，现在和未来</a><br/>
+6.<a href="http://yulingtianxia.com/blog/2016/10/30/Optimizing-App-Startup-Time/">优化 App 的启动时间</a><br/>
+7.<a href="http://bbs.iosre.com/t/igrimace-hook-root-app/440">dyld在hook方面的小东西</a></p>
+
+<h1 id="toc_4">结语</h1>
+
+<p>这里只是简单了概括了从程序启动-&gt;dyld加载依赖库-&gt;runtime初始化-&gt;main 的过程。但这阶段还有很多事情未讲，如果想深入了解还得结合源码来学习，这里我已经将dyld和runtime源码都放在<a href="https://github.com/hwzss/Excutable--dyld--runtime_main">这了</a>，大家可直接下载，也可以从<a href="https://github.com/opensource-apple/dyld">opensource-apple</a>下载。</p>
+
+<h1 id="toc_5">再唠嗑会</h1>
+
+<p>dyld源码前前后后读个大概懂，花了我3个多礼拜的空闲时间，由于C和C++基础并不是很好，所以特意跑回学校买了几本书补了下基础，不过读源码的这段时间还是挺累的。</p>
+
+<p>为什么要去读源码，主要是看别人的文章时并不能很好解决我的某些疑问，而且只有真正去认识源码，去亲身体会才能加深对它的理解。</p>
+
+<p>学习的旅途虽然颇累，但一路下来收获颇多。加油！</p>
+
+<p>前行路，路漫漫，一人一酒似逍遥。<br/>
+<img src="http://upload-images.jianshu.io/upload_images/1488825-418422f5504fd203.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一张图.jpg"/></p>
+
+<p>喜欢的话点个喜欢呗</p>
+
+<br><br><br><br>
+
+</div></body>
+
+</html>
