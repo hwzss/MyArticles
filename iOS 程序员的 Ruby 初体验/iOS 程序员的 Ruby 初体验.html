@@ -1,0 +1,1046 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>#iOS 程序员的 Ruby 初体验</title>
+<style>
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+body {
+  background-color: white;
+}
+
+.markdown-body {
+  min-width: 200px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px;
+
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;;word-wrap: break-word; word-break: break-all;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.diff .hljs-header {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-doctag,
+.tex .hljs-formula {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rule .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body,
+.hljs-name {
+  color: #008080;
+}
+
+.hljs-regexp {
+  color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.diff .hljs-change {
+  background: #0086b3;
+}
+
+.hljs-chunk {
+  color: #aaa;
+}
+
+
+</style>
+
+<style> @media print{ .hljs{overflow: visible; word-wrap: break-word !important;} }</style></head><body><div class="markdown-body">
+<h1 id="toc_0">iOS 程序员的 Ruby 初体验</h1>
+
+<p><img src="https://raw.githubusercontent.com/hwzss/MyArticles/master/iOS%20%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%20Ruby%20%E5%88%9D%E4%BD%93%E9%AA%8C/%E6%9E%81%E6%81%B6%E4%B8%96%E4%BB%A31.png" alt="海贼王极恶世代"/></p>
+
+<blockquote>
+<p>在技术浪潮不断更新发展的时代下，身为程序员的我们不断的在学习新技术，不断的更新自己的技能，不断的和伙伴们一起成长，梦想着有天能航行到技术的顶端。就像海贼王里最恶世代们一样，只有不断的挑战，不断的成长抱团打倒 BOSS，才可能到达终点得到 ONE PIECE 。</p>
+</blockquote>
+
+<h3 id="toc_1">前言</h3>
+
+<p>一开始去学习 <a href="https://zh.wikipedia.org/wiki/Ruby">Ruby</a> 只是想了解 Podfile 里写的东西到底是什么，到后面对 Cocoapod 和 fastlane 源码和原理的好奇，再到想通过学习到的东西改善自己的工作流。</p>
+
+<p>本篇文章记录了自己从小白到 Ruby 简单入门的旅程。</p>
+
+<h3 id="toc_2">Ruby 学习</h3>
+
+<p>做为一个Ruby小白，没人教，啥都不懂该如何去学习这样一门新的语言。<br/>
+没有别的，只能靠自己程序员的大脑和折腾。</p>
+
+<p>对于新的编程语言我需要去了解他的语法，所以找到这几个网址：</p>
+
+<ol>
+<li><a href="https://www.kancloud.cn/imxieke/ruby-base">ruby基础教程（中文第四版）</a></li>
+<li><a href="http://www.runoob.com/ruby/ruby-tutorial.html">Ruby | 菜鸟教程</a></li>
+<li><a href="https://ruby-china.org/">Ruby China社区</a></li>
+</ol>
+
+<p>对于 Ruby 语法刚接触有几个地方有较深的映像：</p>
+
+<ol>
+<li><p>完全面向对象：任何东西都是对象，没有基础类型。平时我们使用的1，2，3，4，5，6在Ruby都是 ‘Fixnum’ 类的实例对象，有着属于自己的方法。</p>
+
+<pre><code class="language-Ruby">1.to_s   // 将 1 转为字符串
+</code></pre></li>
+<li><p>代码块之间不是用{}来表示代码块的范围 而是 end 来表示块的结尾。比如定义一个方法 OC 的做法是：</p>
+
+<pre><code> - (void) method {
+    这里是方法实现代码
+ }
+</code></pre>
+
+<p>而在ruby里：</p>
+
+<pre><code>def method 
+    这里是方法实现代码
+end
+</code></pre></li>
+<li><p>可以用换行替换 “ ; ”，即代码中可以省略 “ ; ”。<br/>
+OC中：</p>
+
+<pre><code class="language-Objective-C"> - (void) method {
+    第一行代码;
+    第二行代码;
+ }
+</code></pre>
+
+<p>Ruby中：</p>
+
+<pre><code class="language-Ruby">def method 
+    第一行代码
+    第二行代码
+end
+</code></pre></li>
+<li><p>每行代码都有返回值。</p>
+
+<p>我们在 irb 中输入下面代码（irb内置在shell的ruby解释器）。</p>
+
+<pre><code class="language-ruby">irb(main):001:0&gt; puts &#39;hello, world&#39;
+hello, world
+=&gt; nil
+</code></pre>
+
+<p>puts &#39;hello, world&#39;意为打印&#39;hello, world&#39;字符串。所以我们得到的第一个输出为正常方法执行的效果，打印出&#39;hello, world&#39;字符串。而第二行</p>
+
+<pre><code>=&gt; nil
+</code></pre>
+
+<p>则是意味着该行代码的放回值为nil。</p>
+
+<p>如果我们的代码是给一个变量，那这行代码的返回值将是变量的值，如下：</p>
+
+<pre><code>irb(main):002:0&gt; a = 1
+=&gt; 1
+</code></pre></li>
+<li><p>一个有返回值的方法中如果没有return，则最后一行代码的返回值就是该方法的返回值。如：</p>
+
+<pre><code>def method 
+    a = 1
+end
+</code></pre>
+
+<p>该方法的返回值为 1 。</p></li>
+</ol>
+
+<h3 id="toc_3">实践</h3>
+
+<p>学习任何编程语言最快的方式就是上手敲。<br/>
+在了解Ruby大致的语法后，便需要开始寻找工具来进行 Coding 实战。最后基于工具的学习时间成本先挑选了 irb 和 Sublime Text</p>
+
+<h4 id="toc_4">irb</h4>
+
+<p>全名 “interactive ruby” ，一个命令行工具，也可以看作是Ruby的解释器。<br/>
+MacOs下系统自带，打开终端输入：</p>
+
+<pre><code class="language-Shell">irb
+</code></pre>
+
+<p>即可启动。启动后就可以输入Ruby代码的，注意每输入一行代码，irb都会给你返回该行代码的返回值，如刚刚出示的代码log</p>
+
+<pre><code class="language-Ruby">irb(main):001:0&gt; puts &#39;hello, world&#39;
+hello, world
+=&gt; nil
+</code></pre>
+
+<h4 id="toc_5">Sublime Text</h4>
+
+<p>Sublime Text 是一套很好跨平台的文字編輯器，如果想要编写很长的 Ruby 代码在 irb 不是很方便，所以选择了它。（ <a href="https://zh.wikipedia.org/wiki/Sublime_Text">Sublime Text 维基百科</a> ）</p>
+
+<h3 id="toc_6">阅读源码</h3>
+
+<p>通过一段时间的实践理解，大致对 Ruby 有初步的认识，可以尝试阅读 <a href="https://fastlane.tools/">fastlane</a>, <a href="https://cocoapods.org/about">cocoapod</a> 源码来对它们进行理解了 ( <a href="https://github.com/fastlane/fastlane">fastlane源码</a>，<a href="https://github.com/CocoaPods/CocoaPods">CocoaPods源码</a> )。</p>
+
+<p>通过源码的阅读对他们大致总结为：通过 Ruby 来调用终端命令。</p>
+
+<p>这里尤其是fastlane，读 fastlane 的很多的工具集 ( <a href="https://docs.fastlane.tools/actions/">actions</a> ) 的源码你会发现里面基本是提供了各种 shell 命令的合集。如 action : <a href="https://docs.fastlane.tools/actions/pod_lib_lint/#pod_lib_lint">pod_lib_lint</a> 的 <a href="https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/pod_lib_lint.rb">源码</a>中可看到:</p>
+
+<pre><code>command &lt;&lt; &quot;pod lib lint&quot;
+
+if params[:verbose]
+command &lt;&lt; &quot;--verbose&quot;
+end
+
+if params[:sources]
+sources = params[:sources].join(&quot;,&quot;)
+command &lt;&lt; &quot;--sources=&#39;#{sources}&#39;&quot;
+end
+
+if params[:allow_warnings]
+command &lt;&lt; &quot;--allow-warnings&quot;
+end
+</code></pre>
+
+<p>源码中可以看到里面提供了我们平时在 Shell 中主动输入的一些命令。</p>
+
+<p>所以如果你想做一个 fastlane 的 action，其实很简单，里面多数都是往command 数组中插入命令，你只要注意遵从 fastlane 对你们的要求格式进行提交你的 action 代码审核就行。</p>
+
+<p>另外我们在使用 fastlane 进行打包的时候，能清楚的看到其答应出所使用的 xcodebuild 的命令。</p>
+
+<p>其实这些也可以通过 Shell 脚本来实现，那为什么 fastlane，Cocoapods 是用 Ruby 来实现的，笔者猜想可能是因为 fastlane，Cocoapods 本身就是基于 Ruby 开发中的工具 rake 和 bundle 思想而开发出来的吧。</p>
+
+<h3 id="toc_7">继续实践</h3>
+
+<p>程序员就是要折腾自己，既然大致原理是通过 Ruby 执行 Shell 命令，那他们能写很多工具来帮助程序员开发，我自己能写一个吗？ 不求写出来的高大上，但求学到的东西能实践应用，写出来的东西能方便自己。</p>
+
+<p>于是就有了这个项目 <a href="https://github.com/hwzss/pod_updater">pod_updater</a>，这个项目意在帮助自己摆脱每次提交自己的私有 pod 库时，总是要在终端输入一堆 git 命令然后在 push 到 podspec 仓库等一系繁琐的操作。</p>
+
+<h3 id="toc_8">开始实践</h3>
+
+<p>首先感觉 irb 不够用了，不能对代码进行调试，而 Sublime Text 只是个编辑器，于是又找到了 RubyMine 。</p>
+
+<p>RubyMine 是一个用于 Ruby 开发的 IDE，可见<a href="https://baike.baidu.com/item/RubyMine">资料</a>。</p>
+
+<ol>
+<li><p>有了 IDE 还不够，有时我们需要使用些成熟的三方库，所以我们需要了解这些 Gem，bundle，Gemfile.</p>
+
+<p>Gem：Ruby 應用程式或程式庫。可以理解为Framework。<br/>
+bundle： 是管理、解決 gem 之間相依性的工具，它會根據 Gemfile 裡頭的設定自動下載和安裝 gem ，而且幫你解決相依問題。可以理解他为iOS开发中的Cocoapod。<br/>
+Gemfile：理解为podfile即可，用于描述程序的相关库安装与依赖关系。<br/>
+<a href="http://yulin-learn-web-dev.logdown.com/posts/246089-brief-notes-of-rubygem-gem-rvm-gemfile-bundler">更多资料</a></p></li>
+<li><p>Ruby 执行shell 命令<br/>
+Ruby执行 shell 命令方式有很多种，可见<a href="">资料</a> ，而我选择是的 IO.popen 方法。</p>
+
+<pre><code>$ irb
+&gt;&gt; IO.popen(&quot;date&quot;) { |f| puts f.gets }
+Wed Jul  4 22:02:31 CST 2012
+=&gt; nil
+</code></pre></li>
+<li><p>接着就是各种资料查找和折腾，最后模仿 fastlane 和 CocoaPods 将自己的工具做成 gem 的形式，于是我的第一个 RubyGem <a href="https://rubygems.org/gems/pod_updater">pod_updater</a> 诞生了，使用效果如下：</p>
+
+<p><img src="https://raw.githubusercontent.com/hwzss/MyArticles/master/iOS%20%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%20Ruby%20%E5%88%9D%E4%BD%93%E9%AA%8C/2018-02-15%2019_16_29.gif" alt="这是pod_updater 终端使用.gif"/></p></li>
+</ol>
+
+<h3 id="toc_9">总结</h3>
+
+<p>对于一门新语言，下手实践才是真道理。</p>
+
+<p>对于自己，学习语言最大的动力莫过于他能帮助自己更好的生活和工作。</p>
+
+<p>今天是 2018 除夕，祝各位程序员同胞新年快乐，过年多吃肉😊。</p>
+
+<h3 id="toc_10">学习资料</h3>
+
+<ol>
+<li><a href="https://www.kancloud.cn/imxieke/ruby-base">ruby基础教程（中文第四版）</a></li>
+<li><a href="http://www.runoob.com/ruby/ruby-tutorial.html">Ruby | 菜鸟教程</a></li>
+<li><a href="https://ruby-china.org/">Ruby China社区</a></li>
+<li><a href="http://yulin-learn-web-dev.logdown.com/posts/246089-brief-notes-of-rubygem-gem-rvm-gemfile-bundler">簡單筆記一下 RubyGem, Gem, RVM, Gemfile, bundler</a></li>
+<li><a href="https://mixandgo.com/blog/mastering-ruby-blocks-in-less-than-5-minutes">Mastering ruby blocks in less than 5 minutes</a></li>
+<li><a href="http://www.jishux.com/plus/view-263254-1.html">在 Ruby 中执行 Shell 命令的 6 种方法</a></li>
+<li><a href="https://ruby-china.org/topics/26292">如何开发一个自己的 Gem</a></li>
+<li><a href="https://www.thoughtco.com/optionparser-parsing-command-line-options-2907753">How to Use OptionParser: Ruby&#39;s Powerful Parsing Tool</a></li>
+</ol>
+
+</div></body>
+
+</html>
