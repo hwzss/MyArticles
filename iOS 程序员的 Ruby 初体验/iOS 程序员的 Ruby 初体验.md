@@ -178,9 +178,9 @@ RubyMine 是一个用于 Ruby 开发的 IDE，可见[资料](https://baike.baidu
     
     ```
     $ irb
->> IO.popen("date") { |f| puts f.gets }
-Wed Jul  4 22:02:31 CST 2012
-=> nil
+    IO.popen("date") { |f| puts f.gets }
+    Wed Jul  4 22:02:31 CST 2012
+    => nil
     ```
     
 3. 接着就是各种资料查找和折腾，最后模仿 fastlane 和 CocoaPods 将自己的工具做成 gem 的形式，于是我的第一个 RubyGem [pod_updater](https://rubygems.org/gems/pod_updater) 诞生了，使用效果如下：
