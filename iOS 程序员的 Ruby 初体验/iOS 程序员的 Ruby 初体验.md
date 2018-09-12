@@ -219,6 +219,7 @@ RubyMine 是一个用于 Ruby 开发的 IDE，可见[资料](https://baike.baidu
 6. [在 Ruby 中执行 Shell 命令的 6 种方法](http://www.jishux.com/plus/view-263254-1.html)
 7. [如何开发一个自己的 Gem](https://ruby-china.org/topics/26292)
 8. [How to Use OptionParser: Ruby's Powerful Parsing Tool](https://www.thoughtco.com/optionparser-parsing-command-line-options-2907753)
+9. [iOS 工程自动化 - Ruby 入门到辅助脚本编写](https://www.jianshu.com/p/e7fad343f3b3)
 
 
 
