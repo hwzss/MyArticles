@@ -39,7 +39,7 @@ fastlane init
 
 可以看到很方便了，如果你选择 2，Fastlane 将帮你配置好 Fastfile 文件，然后你就可以通过简单的命名进行 ipa 包上传了，文件内容如下：
 
-![文件内容截图]()
+![文件内容截图](https://raw.githubusercontent.com/hwzss/MyArticles/master/konw_fastlane/%E6%96%B9%E6%B3%95%E6%88%AA%E5%9B%BE.jpg)
 
 代码里出现了 lane, 你可以想象成方法，而 beta 则是方法名，方法里面的 build_app 和 upload_to_testflight 是其他的一些方法，如它们的命名一样，它们会帮你构建 ipa 文件，然后上传到 testfilght 上，对， 就只需要这几行代码就可以实现。
 
@@ -63,9 +63,9 @@ Fastalne 的配置文件 Fastfile 相对于 Podfile 更像一个代码文件，�
 
 1. 检查项目 version 的合理性，比如必须是 A.B.C的格式的 version, 以及新的构建版本号（ build ）应该为整数；
 2. 再打包时可以在命令中指定 version 版本号或者 build 版本号，如果没有指定，每次构建默认在 build 上加一；
-3. 指定 ipa 文件输出路径，方便 ipa 文件查找，目录排版效果如下:
+3. 指定 ipa 文件输出路径，方便 ipa 文件查找管理，目录排版效果如下:
    
-   ![目录效果图]()
+   ![目录效果图](https://raw.githubusercontent.com/hwzss/MyArticles/master/konw_fastlane/%E7%9B%AE%E5%BD%95%E6%88%AA%E5%9B%BE.jpg)
    
 4. 已集成 Testfilght 和 蒲公英 的支持，新项目使用只需要初始化 Fastlane 环境，然后复制配置内容既可以实现一键打包 Testfilght 或 蒲公英。
 
