@@ -71,7 +71,7 @@ Fastalne 的配置文件 Fastfile 相对于 Podfile 更像一个代码文件，�
    
 4. 已集成 Testfilght 和 蒲公英 的支持，新项目使用只需要初始化 Fastlane 环境，然后复制配置内容既可以实现一键打包 Testfilght 或 蒲公英。
 
-项目地址() 目前只支持这些功能持续增加中。。。 欢迎各路大神提需求，提bug, 提代码。
+项目地址（ http://121.41.108.203/MC-iOS/MC_FalstLaneFile.git ）  目前只支持这些功能持续增加中。。。 欢迎各路大神提需求，提bug, 提代码。
 
 
 ##效果
