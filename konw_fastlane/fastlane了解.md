@@ -1,7 +1,7 @@
 
-![fastlane.图](http://mmbiz.qpic.cn/mmbiz_png/ibnDKD3ktAoaXsTgzlOZ0r6e4JnhlGHLr6ZrYG34vNdBWH58ibec92brrkWsQJMDicAorM6pPibAwIo7gtqlPsYIGw/640?wx_fmt=png&tp=webp&wxfrom=5)
+![fastlane.图](https://raw.githubusercontent.com/hwzss/MyArticles/master/konw_fastlane/fastlane.png)
 
->在日常 App 的开发中，经常需要为自己的 App 的打包，如果你不是很在行脚本语言的话，你可能一般都是直接使用 Xcode 进行打包， 而这样一个过程通常需要耗费相当长的一段时间，这段时间并不是有意义的，你完全可以将它们话在更有意义的地方， 但这点时间目前却是必须浪费的，因为你可能并没找到替代它的工具，而 Fastlane 就是这样一个工具，使用它，你可以一个命令将整个过程放在后台进行，它将自动帮你打包然后上传，甚至提交AppStore。
+>在日常 App 的开发中，经常需要为自己的 App 的打包，如果你不是很在行脚本语言的话，你可能一般都是直接使用 Xcode 进行打包， 而这样一个过程通常需要耗费相当长的一段时间，这段时间并不是有意义的，你完全可以将它们话在更有意义的地方， 但这点时间目前却是必须浪费的，因为你可能并没找到替代它的工具，而 Fastlane 就是这样一个工具，使用它，你可以一个命令将整个过程放在后台进行，它将自动帮你打包然后上传，甚至提交 AppStore。
 
 ##前言
 做为一位 iOS 开发 Cocopods 再熟悉不过了，他为我们的工作提供了很多的方便之处，Fastlane 和 Cocopods 一样皆指在为开发者提供便利的项目管理功能，节省开发者的时间，让开发者腾出更多的于自己的业务代码, 它们两都是基于 Ruby 写的工具，所以在使用方面能看到它们的语法很是相近，或者说根本就是是 Ruby 的语法。下面我们将讲解下 Fastlane 的作用。
@@ -20,7 +20,7 @@ sudo gem install fastlane -NV
 brew cask install fastlane
 ```
 
-如何确认自己安装成功了 ？， 可以在 shell 中使用 which 命令，如下：
+如何确认自己安装成功了 ？ 可以在 shell 中使用 which 命令，如下：
 
 ``` shell
 which fastlane
@@ -51,7 +51,7 @@ fastlane beta
 
 shell 将自动开始对项目进行构建，然后打包，上传。其中的 beta 就是 Fastfile 里的 beta 方法。
 
-上面这些现成的方法在 Fastlane 里成为 Action, 关于 Action 的文档，你可以在这里看到（[文档链接](https://docs.fastlane.tools/actions/)） 。
+上面这些现成的方法在 Fastlane 里称为 Action, 关于 Action 的文档，你可以在这里看到（[文档链接](https://docs.fastlane.tools/actions/)） 。
 
 ##进阶
 
@@ -75,6 +75,9 @@ Fastalne 的配置文件 Fastfile 相对于 Podfile 更像一个代码文件，�
 
 其实说简单点，Fastlane 和 Cocoapods 本质上就是一个通过 Ruby 来执行 shell 进而操作一堆现有的三方工具的工具。 如果你会一种脚本语言，完全可以很简单的 整合 XcodeBuild, Vcgtool等工具实现 Fastlane 的功能。
 
+Fastlane 相比 Cocopods 更自由些, 所以拥有等多功能，但也随值带来更多额外的 Gem 配置， 导致有时项目配置起来可能不是那么顺利，有时又很简单。
+
+最后 Fastlane 不仅仅支持 iOS 同时也支持安卓。
 
 ##相关资料
 
