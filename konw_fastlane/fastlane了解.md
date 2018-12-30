@@ -5,11 +5,11 @@
 
 ##前言
 
-做为一位 iOS 开发 Cocopods 再熟悉不过了，他为我们的工作提供了很多的方便之处，Fastlane 和 Cocopods 一样皆指在为开发者提供便利的项目管理功能，节省开发者的时间，让开发者腾出更多的于自己的业务代码, 它们两都是基于 Ruby 写的工具，所以在使用方面能看到它们的语法很是相近，或者说根本就是是 Ruby 的语法。下面我们将讲解下 Fastlane 的作用。
+做为一位 iOS 开发 Cocoapods 再熟悉不过了，他为我们的工作提供了很多的方便之处，Fastlane 和 Cocoapods 一样皆指在为开发者提供便利的项目管理功能，节省开发者的时间，让开发者腾出更多的于自己的业务代码, 它们两都是基于 Ruby 写的工具，所以在使用方面能看到它们的语法很是相近，或者说根本就是是 Ruby 的语法。下面我们将讲解下 Fastlane 的作用。
 
 ##安装
 
-和 Cocoapods 一样，安装 Fastlane 也很简单，你可以使用 RubyGem 的 安装方式
+和 Cocoapods 一样，安装 Fastlane 也很简单，你可以使用 RubyGems 的 安装方式
 
 ``` shell
 sudo gem install fastlane -NV
@@ -63,7 +63,7 @@ Fastalne 的配置文件 Fastfile 相对于 Podfile 更像一个代码文件，�
 
 基于公司项目打包需要，我实现了下面编写了下面一个 Fastfile 文件，自定义自己公司项目或者的配置文件，相比于 Fastlane 自带的行为，我的文件新添加如下功能：
 
-1. 检查项目 version 的合理性，比如必须是 A.B.C的格式的 version, 以及新的构建版本号（ build ）应该为整数；
+1. 检查项目 version 的合理性，比如必须是 A.B.C 的格式的 version, 以及新的构建版本号（ build ）应该为整数；
 2. 再打包时可以在命令中指定 version 版本号或者 build 版本号，如果没有指定，每次构建默认在 build 上加一；
 3. 指定 ipa 文件输出路径，方便 ipa 文件查找管理，目录排版效果如下:
    
@@ -80,9 +80,9 @@ Fastalne 的配置文件 Fastfile 相对于 Podfile 更像一个代码文件，�
 
 ##总结
 
-其实说简单点，Fastlane 和 Cocoapods 本质上就是一个通过 Ruby 来执行 shell 进而操作一堆现有的三方工具的工具。 如果你会一种脚本语言，完全可以很简单的 整合 XcodeBuild, Vcgtool等工具实现 Fastlane 的功能。
+其实说简单点，Fastlane 和 Cocoapods 本质上就是一个通过 Ruby 来执行 shell 进而操作一堆现有的三方工具的工具。 如果你会一种脚本语言，完全可以很简单的 整合 XcodeBuild, Agvtool等工具实现 Fastlane 的功能。
 
-Fastlane 相比 Cocopods 更自由些, 所以拥有等多功能，但也随值带来更多额外的 Gem 配置， 导致有时项目配置起来可能不是那么顺利，有时又很简单。
+Fastlane 相比 Cocoapods 更自由些, 所以拥有等多功能，但也随值带来更多额外的 Gem 配置， 导致有时项目配置起来可能不是那么顺利，有时又很简单。
 
 最后 Fastlane 不仅仅支持 iOS 同时也支持安卓。
 
@@ -90,7 +90,6 @@ Fastlane 相比 Cocopods 更自由些, 所以拥有等多功能，但也随值�
 
 1. [Fastlane官网](https://fastlane.tools/)
 2. [Fastlane官方文档](https://docs.fastlane.tools/)
-3. [Fastlane-移动开发自动化之道
-](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247488389&amp;idx=1&amp;sn=a218682281a3b3f205eeb09fb93aeadd&source=41#wechat_redirect)
+3. [Fastlane-移动开发自动化之道](https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==&mid=2247488389&amp;idx=1&amp;sn=a218682281a3b3f205eeb09fb93aeadd&source=41#wechat_redirect)
 
 
