@@ -35,7 +35,7 @@ fastlane init
 ```
 是不是和 Cocoapods 差不多，Fastlane 也会为你生成和 Podfile 类似的配置文件 Fastfile 让你进行配置。 在新版的 Fastlane 中，改进了很多东西，比如你第一次在项目路径进行 init 的时候，它会询问你需要什么样的功能，如下：
 
-![初次使用截图.png]()
+![初次使用截图.png](https://raw.githubusercontent.com/hwzss/MyArticles/master/konw_fastlane/shell%E6%88%AA%E5%9B%BE.png)
 
 可以看到很方便了，如果你选择 2，Fastlane 将帮你配置好 Fastfile 文件，然后你就可以通过简单的命名进行 ipa 包上传了，文件内容如下：
 
