@@ -132,6 +132,34 @@ CFNumberRef heightNumberRef = CFDictionaryGetValue(imageProperties, kCGImageProp
     
     更多详情代码，可见[DEMO](https://github.com/hwzss/UrlGetImageSizeDemo)。
     
+    
+#### 最后结果代码
+[XCSImagePrefetcher](https://github.com/hwzss/UrlGetImageSizeDemo/blob/master/URLGetImageSize/XCSImagePrefetcher.m) 通过传入 URL 来获取图片的宽高。
+
+```
+@interface XCSImagePrefetcher : NSObject
+
+@property (nonatomic, strong, readonly) NSMutableData *downloadData;
+@property (nonatomic, strong, readonly) NSURL *imageUrl;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithUrl:(NSURL *)url NS_DESIGNATED_INITIALIZER;
+- (CGSize)fetchImageSize;
+
+@end
+
+```
+
+使用方式如下:
+
+```objc
+
+    XCSImagePrefetcher *fetcher = [[XCSImagePrefetcher alloc] initWithUrl:[NSURL URLWithString:JPG_IMG_URL]];
+    NSLog(@"%@", NSStringFromCGSize([fetcher fetchImageSize]));
+```
+
+更多测试代码，可见[DEMO](https://github.com/hwzss/UrlGetImageSizeDemo)。
+    
 #### 总结
 1. 在数据的提取过程中，需要注意大小端问题导致的数据解析出来不对（[相关知识](http://www.ruanyifeng.com/blog/2016/11/byte-order.html)）；
 2. 即使通过这种方式进行优化，获取图片大小问题仍然因为需要发送网络请求而变的速度不够稳定，所以真正的解决方案，还是需要服务端配合添加上图片数据宽高的记录；
@@ -142,6 +170,7 @@ CFNumberRef heightNumberRef = CFDictionaryGetValue(imageProperties, kCGImageProp
 1. [理解字节序大小端](http://www.ruanyifeng.com/blog/2016/11/byte-order.html)
 2. [各种图头信息格式汇总](http://www.fastgraph.com/help/image_file_header_formats.html)
 3. [HTTP 头字段了解](https://juejin.im/post/5ab341e06fb9a028c6759ce0)
+4. [国外大神文章关于SWIFT版获取图片，本文主要实现也是参考它的, 感谢](http://danielemargutti.com/2018/09/09/prefetching-images-size-without-downloading-them-entirely-in-swift/)
 
     
 
