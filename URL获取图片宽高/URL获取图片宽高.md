@@ -1,5 +1,6 @@
 # 通过 URL 获取图片宽高优化
 
+![一张小图.png](https://raw.githubusercontent.com/hwzss/MyArticles/master/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98.png)
 ### 前言
 客户端研发时，有时会有这样的需求，需要根据图片链接地址获取图片的宽高来进行界面排版。
 
