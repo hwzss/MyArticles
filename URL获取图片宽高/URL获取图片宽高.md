@@ -1,0 +1,126 @@
+# 通过 URL 获取图片宽高优化
+
+###前言
+客户端研发时，有时会有这样的需求，需要根据图片链接地址获取图片的宽高来进行界面排版。
+
+比较正规的做法，是服务端在返回数据时将图片的信息属性一起带回来，这也符合轻客户端设计规范。但是现实不是理想，有时就是会出现这种情况，所以本文，针对通过 URL 来获取图片宽高进行简单的介绍。
+
+###传统方案：
+最为常见也是最慢的一种方案，通过 URL 下载图片，得到图片数据后获取图片宽高。
+
+这种方式 iOS 下有很多实现方案，可以使用三方工具进行图片下载，也可以直接自己写。 比如本文使用 `CGImageSource` 来通过 URL 图片信息，这种方式，其实就是通过下载整个图片然后解析数据，从而得到图片的宽高。核心代码如下：
+
+``` Objective-C
+// 获取图像属性
+CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, NULL);
+```
+
+###改进方案：
+相对传统方案，在获取图片的宽高的时候，下载了整个图片数据，但这里我们的需求只是获取图片的宽高信息，此时还不需要全部的图片信息，如果我们通过 URL 获取图片的指定信息，而不是下载一个完整图片后再来解析的话，就能减少此次请求的传输的数据量，从而加快信息的获取。那如何实现呢？
+
+在图片数据中，不管什么格式，在表示该图片的数据中，总是有一段数据块表示着这个图片的描述信息，比如该图片的宽高大小，所以我们只要通过 URL 获取该段信息，就可以从中解析出我们需要的图片宽高。如下图，为 PNG 图片的数据格式：
+
+![PNG数据头数据](https://user-gold-cdn.xitu.io/2018/11/30/167637eb0fced4ac?imageslim)
+
+图中我们只需要关注 `PNG Signature` 与标红的 `WIDTH` `HEIGHT` 段，`PNG Signature`标志着该图片是一张 PNG 图，知道它是 PNG 图数据后， 在数据的固定位置处，即 `WIDTH` `HEIGHT` 所在的字节位置里存放的就是该图片的宽高信息，所以我们只需要从该处取出所村数据就知道图片宽高了。同理针对其他格式的图片也是一样的，只是他们中数据的段格式以及位置有些不同，但都存在着这样一个数据段表示着图片的描述信息。(这里并不对所有的图片格式进行介绍，这里有资料了解[资料]())
+
+###代码实现：
+1. 通过设置 `HTTP` 请求头 `Range` 字段来获取数据的某位置段数据；
+   比如，此时有一张 PNG 图的链接地址，想要知道其宽高，代码如下：
+   
+   ``` OBjective-C
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setValue:@"bytes=16-23" forHTTPHeaderField:@"Range"];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil
+                                                     error:nil];
+    CGSize size = CGSizeZero;
+    if (data.length >= 8) {
+        int w = 0, h = 0;
+        [data getBytes:&w range:NSMakeRange(0, 4)];
+        [data getBytes:&h range:NSMakeRange(4, 4)];
+        w = CFSwapInt32BigToHost(w);
+        h = CFSwapInt32BigToHost(h);
+        size = CGSizeMake(w, h);
+    }
+   ```
+   在`16-23`字节位置处，前4字节代表着宽，后4字节代表着高，由此我们就完成了图片的宽高获取，相对于传统方式，不管图片真实大小多大，我们只下载了仅仅 8 字节的数据，无疑加快了速度和节省了流量，其他格式图代码可见DEMO。
+2. 直接下载，在网络回调中解析数据，得到足够数据后，解析出宽高，提前停止请求。
+    在第一种方式中，虽然速度很快但存在一个问题，下载前必须先知道图片宽高数据存储位置，对于 PNG 和 GIF 图片来说是没有问题，但在 JPG 格式图时，由于其数据段并不是在文件的头部，也不再固定的位置，他可能在中间的任何一段地方，所以通过提前指定 `header` 的 `Range` 范围是无法有效获取到信息的，此时，我们只能通过一边下载图片数据，一边在我们得到的数据中进行解析，如果得到了描述信息段，则开始解析，解析到后提前结束网络请求，这样在速度和流量方面相对于传统的依然是有一定的提升。下图为JPG图数据格式：
+    ![](https://user-gold-cdn.xitu.io/2018/11/30/167637eb0fd7f377?imageslim)
+    
+    其中 `FFCO`段为描述段信息开头，找到了它就找到了宽高。
+    核心代码：
+    
+    ``` Objective-C
+    - (CGSize)fetchHWFromJPGData:(NSData *)data {
+    CGSize size = CGSizeZero;
+    // FF D8 FF E0 (XX XX 这两字节为长度) ('JF' 'TF' 转为ascll码值)
+    UInt8 word0 = 0x0, word1 = 0x0, word2 = 0x0, word3 = 0x0;
+    [data getBytes:&word0 range:NSMakeRange(0, 1)];
+    [data getBytes:&word1 range:NSMakeRange(1, 1)];
+    [data getBytes:&word2 range:NSMakeRange(2, 1)];
+    [data getBytes:&word3 range:NSMakeRange(3, 1)];
+    if (word0 == 0xFF && word1 == 0xD8 && word2 == 0xFF && word3 == 0xE0) {
+        UInt8 c0 = 0, c1 = 0, c2 = 0, c3 = 0;
+        [data getBytes:&c0 range:NSMakeRange(6, 1)];
+        [data getBytes:&c1 range:NSMakeRange(7, 1)];
+        [data getBytes:&c2 range:NSMakeRange(8, 1)];
+        [data getBytes:&c3 range:NSMakeRange(9, 1)];
+        if (c0 == 'J' && c1 == 'F' && c2 == 'I' && c3 == 'F') {
+            UInt16 block_length = 0;
+            [data getBytes:&block_length range:NSMakeRange(4, 2)];
+            block_length = XCSSwapWebIntToInt16(block_length);
+            int i = 4;
+            do {
+                i += block_length;
+                if (i > data.length) {
+                    break;
+                }
+                UInt8 aW = 0x0;
+                [data getBytes:&aW range:NSMakeRange(i, 1)];
+                if (aW != 0xFF) {
+                    break;
+                }
+                
+                UInt8 ca = 0x0;
+                [data getBytes:&ca range:NSMakeRange(i+1, 1)];
+                if (ca >= 0xC0 && ca<= 0xC3) {
+                    /**
+                     图片信息段 FF CO (xx xx 该段长度) XX(抛弃字节，不用) (HH HH 高度) (WW WW 宽度) ...后面是其他信息。
+                     这里宽高段和 png gif 等都不一样，jpg 是高在前
+                     */
+                    UInt16 w = 0, h = 0;
+                    [data getBytes:&h range:NSMakeRange(i + 5, 2)];
+                    [data getBytes:&w range:NSMakeRange(i + 7, 2)];
+                    w = XCSSwapWebIntToInt16(w);
+                    h = XCSSwapWebIntToInt16(h);
+                    size = CGSizeMake(w, h);
+                    break;
+                }else {
+                    i += 2;
+                    [data getBytes:&block_length range:NSMakeRange(i, 2)];
+                    block_length = XCSSwapWebIntToInt16(block_length);
+                }
+            } while (i < data.length);
+        }
+        
+    }
+    return size;
+}
+    ```
+    
+    更多详情代码，可见[DEMO]()
+    
+####总结
+1. 在数据的提取过程中，需要注意大小端问题导致的数据解析出来不对（大小端相关知识）；
+2. 即使通过这种方式进行优化，获取图片大小问题仍然因为需要发送网络请求而变的速度不够稳定，所以真正的解决方案，还是需要服务端配合添加上图片数据宽高的记录；
+3. 实际应用中需要和缓存配合来达到最佳效果。
+
+####相关资料
+
+1. [理解字节序大小端](http://www.ruanyifeng.com/blog/2016/11/byte-order.html)
+2. [各种图头信息格式汇总](http://www.fastgraph.com/help/image_file_header_formats.html)
+3. [HTTP 头字段了解](https://juejin.im/post/5ab341e06fb9a028c6759ce0)
+
+    
+
