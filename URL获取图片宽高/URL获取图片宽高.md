@@ -1,5 +1,7 @@
 # 通过 URL 获取图片宽高优化
 
+
+
 ![一张小图.png](https://raw.githubusercontent.com/hwzss/MyArticles/master/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98.png)
 ### 前言
 客户端研发时，有时会有这样的需求，需要根据图片链接地址获取图片的宽高来进行界面排版。
@@ -45,7 +47,8 @@ CFNumberRef heightNumberRef = CFDictionaryGetValue(imageProperties, kCGImageProp
 ![GIF头格式](https://raw.githubusercontent.com/hwzss/MyArticles/master/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98/gif%E5%A4%B4.png)
 
 ### 代码实现：
-1. 通过设置 `HTTP` 请求头 `Range` 字段来获取数据的某位置段数据；
+1. 方式1：通过设置 `HTTP` 请求头 `Range` 字段来获取数据的某位置段数据；
+
    比如，此时有一张 PNG 图的链接地址，想要知道其宽高，代码如下：
    
    ``` objc
@@ -64,14 +67,14 @@ CFNumberRef heightNumberRef = CFDictionaryGetValue(imageProperties, kCGImageProp
     }
    ```
    在`16-23`字节位置处，前4字节代表着宽，后4字节代表着高，由此我们就完成了图片的宽高获取，相对于传统方式，不管图片真实大小多大，我们只下载了仅仅 8 字节的数据，无疑加快了速度和节省了流量，其他格式图代码可见[文件](https://github.com/hwzss/UrlGetImageSizeDemo/blob/master/URLGetImageSize/NSURL%2BImageSize.m)。
-2. 直接下载，在网络回调中解析数据，得到足够数据后，解析出宽高，提前停止请求。
-    在第一种方式中，虽然速度很快但存在一个问题，下载前必须先知道图片宽高数据存储位置，对于 PNG 和 GIF 图片来说是没有问题，但在 JPG 格式图时，由于其数据段并不是在文件的头部，也不再固定的位置，可能在中间的任何一段地方，所以通过提前指定请求头 的 `Range` 范围是无法有效获取到信息的，此时我们只能通过一边下载图片数据，一边在解析得到的数据，如果检测到了图片的描述信息段，则开始解析，解析成功后提前结束网络请求，这样在速度和流量方面相对于传统的依然是有一定的提升。下图为 JPG 图数据格式：
-    ![](https://raw.githubusercontent.com/hwzss/MyArticles/master/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98/JPEG%E5%9B%BE.png)
-    
-    其中 `FFCO`段为描述段信息开头，我们在代码中通过While 来在一个个数据段中寻找该描述段，找到了它就找到了宽高。
+2.  方式2：直接下载，在网络回调中解析数据，得到足够数据后，解析出宽高，提前停止请求。
+在第一种方式中，虽然速度很快但存在一个问题，下载前必须先知道图片宽高数据存储位置，对于 PNG 和 GIF 图片来说是没有问题，但在 JPG 格式图时，由于其数据段并不是在文件的头部，也不再固定的位置，可能在中间的任何一段地方，所以通过提前指定请求头 的 `Range` 范围是无法有效获取到信息的，此时我们只能通过一边下载图片数据，一边在解析得到的数据，如果检测到了图片的描述信息段，则开始解析，解析成功后提前结束网络请求，这样在速度和流量方面相对于传统的依然是有一定的提升。下图为 JPG 图数据格式：
+    ![](https://raw.githubusercontent.com/hwzss/MyArticles/master/URL%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98/JPEG%E5%9B%BE.png)    
+其中 `FFCO`段为描述段信息开头，我们在代码中通过While 来在一个个数据段中寻找该描述段，找到了它就找到了宽高。
     代码如下：
     
-    ``` objc
+``` objc
+
     - (CGSize)fetchHWFromJPGData:(NSData *)data {
     CGSize size = CGSizeZero;
     // FF D8 FF E0 (XX XX 这两字节为长度) ('JF' 'TF' 转为ascll码值)
@@ -127,10 +130,9 @@ CFNumberRef heightNumberRef = CFDictionaryGetValue(imageProperties, kCGImageProp
     }
     return size;
 }
-
-    ```    
+```    
     
-    更多详情代码，可见[DEMO](https://github.com/hwzss/UrlGetImageSizeDemo)。
+更多详情代码，可见[DEMO](https://github.com/hwzss/UrlGetImageSizeDemo)。
     
     
 #### 最后结果代码
