@@ -10,7 +10,7 @@
 
 这种方式 iOS 下有很多实现方案，可以使用三方工具进行图片下载，也可以直接自己写。 比如本文使用 `CGImageSource` 来通过 URL 图片信息，这种方式，其实就是通过下载整个图片然后解析数据，从而得到图片的宽高。核心代码如下：
 
-``` Objective-C
+``` objc
 // 获取图像属性
 CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, NULL);
 ```
@@ -20,7 +20,7 @@ CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource
 
 在图片数据中，不管什么格式，在表示该图片的数据中，总是有一段数据块表示着这个图片的描述信息，比如该图片的宽高大小，所以我们只要通过 URL 获取该段信息，就可以从中解析出我们需要的图片宽高。如下图，为 PNG 图片的数据格式：
 
-![PNG数据头数据](https://user-gold-cdn.xitu.io/2018/11/30/167637eb0fced4ac?imageslim)
+![PNG数据头数据图](https://user-gold-cdn.xitu.io/2018/11/30/167637eb0fced4ac?imageslim)
 
 图中我们只需要关注 `PNG Signature` 与标红的 `WIDTH` `HEIGHT` 段，`PNG Signature`标志着该图片是一张 PNG 图，知道它是 PNG 图数据后， 在数据的固定位置处，即 `WIDTH` `HEIGHT` 所在的字节位置里存放的就是该图片的宽高信息，所以我们只需要从该处取出所村数据就知道图片宽高了。同理针对其他格式的图片也是一样的，只是他们中数据的段格式以及位置有些不同，但都存在着这样一个数据段表示着图片的描述信息。(这里并不对所有的图片格式进行介绍，这里有资料了解[资料]())
 
@@ -28,7 +28,7 @@ CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource
 1. 通过设置 `HTTP` 请求头 `Range` 字段来获取数据的某位置段数据；
    比如，此时有一张 PNG 图的链接地址，想要知道其宽高，代码如下：
    
-   ``` OBjective-C
+   ``` objc
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:@"bytes=16-23" forHTTPHeaderField:@"Range"];
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil
@@ -43,7 +43,7 @@ CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource
         size = CGSizeMake(w, h);
     }
    ```
-   在`16-23`字节位置处，前4字节代表着宽，后4字节代表着高，由此我们就完成了图片的宽高获取，相对于传统方式，不管图片真实大小多大，我们只下载了仅仅 8 字节的数据，无疑加快了速度和节省了流量，其他格式图代码可见DEMO。
+   在`16-23`字节位置处，前4字节代表着宽，后4字节代表着高，由此我们就完成了图片的宽高获取，相对于传统方式，不管图片真实大小多大，我们只下载了仅仅 8 字节的数据，无疑加快了速度和节省了流量，其他格式图代码可见[文件](https://github.com/hwzss/UrlGetImageSizeDemo/blob/master/URLGetImageSize/NSURL%2BImageSize.m)。
 2. 直接下载，在网络回调中解析数据，得到足够数据后，解析出宽高，提前停止请求。
     在第一种方式中，虽然速度很快但存在一个问题，下载前必须先知道图片宽高数据存储位置，对于 PNG 和 GIF 图片来说是没有问题，但在 JPG 格式图时，由于其数据段并不是在文件的头部，也不再固定的位置，他可能在中间的任何一段地方，所以通过提前指定 `header` 的 `Range` 范围是无法有效获取到信息的，此时，我们只能通过一边下载图片数据，一边在我们得到的数据中进行解析，如果得到了描述信息段，则开始解析，解析到后提前结束网络请求，这样在速度和流量方面相对于传统的依然是有一定的提升。下图为JPG图数据格式：
     ![](https://user-gold-cdn.xitu.io/2018/11/30/167637eb0fd7f377?imageslim)
@@ -51,7 +51,7 @@ CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource
     其中 `FFCO`段为描述段信息开头，找到了它就找到了宽高。
     核心代码：
     
-    ``` Objective-C
+    ``` objc
     - (CGSize)fetchHWFromJPGData:(NSData *)data {
     CGSize size = CGSizeZero;
     // FF D8 FF E0 (XX XX 这两字节为长度) ('JF' 'TF' 转为ascll码值)
@@ -107,12 +107,13 @@ CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource
     }
     return size;
 }
-    ```
+
+    ```    
     
-    更多详情代码，可见[DEMO]()
+    更多详情代码，可见[DEMO](https://github.com/hwzss/UrlGetImageSizeDemo)。
     
 #### 总结
-1. 在数据的提取过程中，需要注意大小端问题导致的数据解析出来不对（大小端相关知识）；
+1. 在数据的提取过程中，需要注意大小端问题导致的数据解析出来不对（[相关知识](http://www.ruanyifeng.com/blog/2016/11/byte-order.html)）；
 2. 即使通过这种方式进行优化，获取图片大小问题仍然因为需要发送网络请求而变的速度不够稳定，所以真正的解决方案，还是需要服务端配合添加上图片数据宽高的记录；
 3. 实际应用中需要和缓存配合来达到最佳效果。
 
